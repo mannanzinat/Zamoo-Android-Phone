@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="facebook_app_id" translatable="false">539730390044917</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb539730390044917</string>
+    <string name="facebook_application_id" translatable="false">539730390044917</string>
+
+    <string name="admob_app_id" translatable="false">ca-app-pub-8804184340526788~7833821786</string>
+
+    <string name="app_name">Zamoo TV</string>
+    <!--app_title for main navigation & home title-->
+    <string name="app_title">Zamoo TV &amp; Smart tv</string>
+    <string name="app_version">1.1.0</string>
+    <string name="contact_email">fretel.dev@gmail.com</string>
+    <string name="copyright_text">Copyright @ Freetel Sarl \nTous droits réservés</string>
+    <!-- App -->
+    <string name="featured_tv_channels">Chaînes TV à la Une</string>
+    <string name="latest_movie">Films récemment ajoutés</string>
+    <string name="latest_tv_series">Séries TV récemment ajoutées</string>
+    <string name="more">Voir tout</string>
+    <string name="movie">Films</string>
+    <string name="live_tv">Chaînes TV</string>
+    <string name="radio">Radios</string>
+    <string name="event">Événements</string>
+    <string name="tv_series">Séries TV</string>
+    <string name="country">Pays</string>
+    <string name="genre">Genres</string>
+    <string name="favorite">Favoris</string>
+    <string name="search">Recherche</string>
+    <string name="no_item_found">Aucun élément trouvé</string>
+    <string name="cast_n_crew">Distribution et équipe technique</string>
+    <string name="related_movie">Film connexe</string>
+    <string name="signin">Se connecter</string>
+    <string name="reset">Réinitialiser le mot de passe</string>
+    <string name="register">S\'inscrire</string>
+    <string name="full_name">Nom complet</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="save">Enregistrer</string>
+    <string name="director">Réalisateur :</string>
+    <string name="description">Description</string>
+    <string name="comments">Commentaires</string>
+    <string name="your_comments">Vos commentaires</string>
+    <string name="add_comments">Ajouter commentaire</string>
+    <string name="no_internet">Pas de connexion internet !</string>
+    <string name="copyright">Droits d\'auteur</string>
+    <string name="contact_us">Contactez-nous</string>
+    <string name="fetch_error">Impossible de récupérer les données</string>
+    <string name="login_first">Vous devez d\'abord vous connecter</string>
+    <string name="comment_empty">Le commentaire ne peut pas être vide</string>
+    <string name="error_toast">Quelque chose s\'est mal passé ! réessayez plus tard</string>
+
+    <string-array name="nav_item_name">
+        <item>Accueil</item>
+        <item>Films</item>
+        <item>Séries TV</item>
+        <item>Chaînes TV</item>
+        <item>Radios</item>
+        <item>Genres</item>
+        <item>Pays</item>
+        <item>Événements</item>
+        <item>Mon compte</item>
+        <item>Favoris</item>
+        <item>Inscription</item>
+        <item>Paramètres</item>
+        <item>Déconnexion</item>
+
+    </string-array>
+
+    <string-array name="nav_item_image">
+        <item>outline_home_24</item>
+        <item>outline_movie_24</item>
+        <item>outline_local_movies_24</item>
+        <item>outline_live_tv_24</item>
+        <item>ic_radio_black_24dp</item>
+        <item>outline_folder_24</item>
+        <item>outline_outlined_flag_24</item>
+        <item>ic_event_black_24dp</item>
+        <item>outline_person_24</item>
+        <item>outline_favorite_border_24</item>
+        <item>ic_subscriptions_black_24dp</item>
+        <item>outline_settings_24</item>
+        <item>outline_lock_24</item>
+    </string-array>
+
+
+    <string-array name="nav_item_name_2">
+        <item>Accueil</item>
+        <item>Films</item>
+        <item>Séries TV</item>
+        <item>Chaînes TV</item>
+        <item>Radios</item>
+        <item>Genres</item>
+        <item>Pays</item>
+        <item>Événements</item>
+        <item>S\'identifier</item>
+        <item>Téléchargements</item>
+        <item>Paramètres</item>
+    </string-array>
+
+    <string-array name="nav_item_image_2">
+        <item>outline_home_24</item>
+        <item>outline_movie_24</item>
+        <item>outline_local_movies_24</item>
+        <item>outline_live_tv_24</item>
+        <item>ic_radio_black_24dp</item>
+        <item>outline_folder_24</item>
+        <item>outline_outlined_flag_24</item>
+        <item>ic_event_black_24dp</item>
+        <item>outline_lock_24</item>
+        <item>ic_file_download_black_24dp</item>
+        <item>outline_settings_24</item>
+    </string-array>
+
+
+    //payment information
+    <!-- warning
+    if your information contains apostrophe then you must use  \ before apostrophe
+    Example: don't, must write as don\'t -->
+    <string-array name="payment_info" tools:ignore="InconsistentArrays">
+        <item> Emportez Zamoo Play, partout avec vous et profiter du streaming. C\'est une offre: </item>
+        <item>1. Sans engagement.</item>
+        <item>2. Non cumulable.</item>
+        <item>3. Annulable à tout. moment</item>
+        <item>4. Aucun frais d\'activation/annulation.</item>
+        <item> En continuant, vous acceptez les conditions d\'Abonnement et d\'utilisation. Le paiement n\'est valable qu\e pour un seul événement, jusqu\'à sa suppression. Vous recevrez un e-mail de confirmation de paiement. </item>
+
+    </string-array>
+
+
+    <string name="title_activity_player">PlayerActivity</string>
+
+    <string name="title_activity_item_show">ItemShowActivity</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="title_activity_reply">ReplyActivity</string>
+    <string name="add_to_queue">Ajouter à la file d\'attente</string>
+    <string name="play_now"> En ce moment vous regardez. </string>
+    <string name="go_premium">Go Premium</string>
+    <string name="play_next">File d\'attente</string>
+    <string name="queue_item_added_to_play_next">Un élément a été ajouté à la file d\'attente</string>
+    <string name="queue_item_added_to_queue">Un élément a été ajouté à la file d\'attente</string>
+    <string name="program_guide">Guide des programmes</string>
+    <string name="live">Chaînes</string>
+    <string name="watching_on">Regardez en direct sur</string>
+    <string name="all_tv_channel">Autres chaînes disponibles</string>
+    <string name="you_may_also_like">Les clients ont également regardé</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="tv_channels">Chaînes TV</string>
+    <string name="watching_catch_up_tv">Watching Catch-up TV</string>
+    <string name="deactive_account_text">Si vous ne souhaitez pas utiliser ce compte, vous pouvez facilement le désactiver</string>
+    <string name="reason_to_deactivate_account">Pourquoi avez-vous désactivé votre compte ?</string>
+    <string name="enter_password">Mot de passe</string>
+    <string name="long_text">Politique de confidentialité</string>
+
+    <string name="terms_condition_text">
+       Votre vie privée est importante pour nous. Nous avons parfois besoin d\'informations pour fournir les services que vous demandez. Cette déclaration de confidentialité s\'applique à Freetel Sarl et à son produit  Zamoo Play.
+
+        \n\nRenseignements personnels
+
+Nous NE collectons, stockons ou utilisons aucune information personnelle pendant que vous visitez, téléchargez ou mettez à niveau nos produits.
+
+Nous pouvons utiliser les informations personnelles que vous avez communiquées aux seules fins suivantes: nous aider à développer, fournir et améliorer nos produits et services et à fournir un service de meilleure qualité; gérer des sondages en ligne et d\'autres activités auxquelles vous avez participé.
+
+        \n\nDans les circonstances suivantes, nous pouvons divulguer vos informations personnelles conformément à votre souhait ou à la réglementation en vigueur:
+
+· (1) votre autorisation préalable;
+
+· (2) Par la loi applicable dans ou hors de votre pays de résidence, procédure judiciaire, demandes de litige;
+
+· (3) À la demande d\'autorités publiques et gouvernementales;
+
+· (4) Protéger nos droits et intérêts légaux.
+
+        \n\Informations non personnelles
+
+Nous pouvons collecter et utiliser des informations non personnelles dans les circonstances suivantes. Pour mieux comprendre le comportement des utilisateurs, résoudre les problèmes de produits et services, améliorer nos produits, nos services et notre publicité, nous pouvons collecter des informations non personnelles telles que le nom de l\'application installée et le nom du package, les données d\'installation, la fréquence d\'utilisation, le pays. , équipement et canal.
+
+        \n\nNOUS NE PARTAGERONS AUCUNE INFORMATION DE VOTRE APPAREIL AVEC DES TIERS.
+
+SI VOUS NE COMPRENEZ PAS ET / OU ACCEPTEZ LA VIE PRIVÉE, VOUS DEVEZ IMMÉDIATEMENT SORTIR ET ÉVITER DE FAIRE L\'UTILISATION DES SERVICES DE Zamoo Play
+
+Mise à jour de la politique de confidentialité
+
+Zamoo Play mettra occasionnellement à jour cette déclaration de confidentialité. Dans ce cas, nous réviserons également la date de la \"dernière modification" de la déclaration de confidentialité. Nous ne garantissons pas que le contenu sera mis à disposition sur le site ou par le biais des services. Nous nous réservons le droit de (i) supprimer, éditer, modifier ou bloquer des Services tout contenu à notre seule discrétion, à tout moment, sans préavis et pour quelque raison que ce soit (y compris, sans toutefois s'y limiter, à la réception de réclamations ou d\'allégations de tiers ou d'autorités relatives à ce Contenu ou si nous craignons que vous n\'ayez enfreint la dernière phrase du paragraphe précédent), ou pour aucune raison.
+    </string>
+    <string name="deactivate_account">Désactiver votre compte</string>
+    <string name="explore_by_genre">Explorer par genre</string>
+    <string name="explore_by_country">Explorer Par Pays</string>
+    <string name="share_this_app">Partager l\'application</string>
+    <string name="connect_to_tv">Connecter ma TV</string>
+    <string name="share_body">Il est rare de trouver une application tout en un comme celle-ci. Je vous recommande cette application gratuite où on peut regarder des chaines de chez nous; des films, des concerts et spectacles de nos artistes et autres en direct. Rassurez-vous, il y a tout ce qui est intéressant. Vous pouvez la télécharger ici/ Here you can download this from playstore :\n    https://play.google.com/store/apps/details?id=</string>
+    <string name="term_of_services">Conditions d\'utilisation</string>
+    <string name="accept">Accepter</string>
+    <string name="decline">Décliner</string>
+    <string name="account_deactivate_info"><![CDATA[Votre compte sera désactivé & Seul un administrateur peut le réactiver.]]></string>
+    <string name="regular_program">Programme Régulier</string>
+    <string name="international">Internationale</string>
+    <string name="server">Server</string>
+    <string name="_1080p">1080P</string>
+    <string name="dummy_name">Jhon Doe</string>
+    <string name="notifications">NOTIFICATIONS</string>
+    <string name="push_notification">Push Notification</string>
+    <string name="others">AUTRES</string>
+    <string name="no_data_found">Aucune donnée trouvée.</string>
+    <string name="no_subscription_history">Aucun historique d\'abonnement trouvé.</string>
+    <string name="plan">Plan</string>
+    <string name="no_active_subscription_found">Aucun abonnement actif n\'a été trouvé.</string>
+    <string name="upgrade_membership">Mettre à niveau l\'adhésion</string>
+    <string name="p_date">P.Date</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="action">Action</string>
+    <string name="status">Status</string>
+    <string name="by_tapping_the_button_you_agree_to_oxxo_term_amp_condition_and_privacy_policy"><![CDATA[By tapping the button, you agree to Zamoo Play Term & Condition and Privacy Policy.]]></string>
+
+
+    <string name="paid_content">You need a subscription or premium ticket to watch premium video.</string>
+    <string name="subscribe">S\'abonner</string>
+    <string name="subscription_required">Abonnement requis</string>
+    <string name="pay_with_paypal">Payer avec Paypal</string>
+    <string name="pay_with_stripe">Payer avec Stripe</string>
+    <string name="subscribe_text">S\'abonner</string>
+    <string name="plan_select_error_message">Veuillez sélectionner un abonnement pour commencer.</string>
+    <string name="payment_success">Payment Success.</string>
+    <string name="invalid_card">Carte invalide</string>
+    <string name="subscribe_error">Pour s\'abonner, vous devez d\'abord vous connecter.</string>
+    <string name="payment_info_warning">Please press the Finishing payment process button. Otherwise you will not able to watch paid content.</string>
+    <string name="payment_with">Payment with</string>
+    <string name="something_wront_text">Something went wrong, try again or contact to your developer.</string>
+    <string name="first_name">Prénom</string>
+    <string name="last_name">Nom de famille</string>
+    <string name="input_common_error">Ce champ ne peut pas être vide.</string>
+    <string name="go_back">Revenir en arrière</string>
+    <string name="cvv">CVV</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="card_number">Card Number</string>
+    <string name="apply">Appliquer</string>
+    <string name="error_empty_coupon">Veuillez saisir votre code coupon</string>
+    <string name="coupon_code">Code Coupon</string>
+    <string name="unlock">Déverouiller</string>
+    <string name="downloading">En cours de téléchargement </string>
+    <string name="download_completed">Téléchargement Complet</string>
+    <string name="watch_now">Regarder Maintenant</string>
+    <string name="download">Téléchargement</string>
+    <string name="select_server">Selectionner le Serveur</string>
+    <string name="home">Accueil</string>
+    <string name="buy_any_subscription_below_and_enjoy_oxoo_prime">Buy any subscription below and enjoy Zamoo Play prime features.</string>
+    <string name="all_tv_channels">Toutes les chaînes TV</string>
+    <string name="all_kids_videos">Toutes les vidéos pour enfants</string>
+    <string name="all_tv_series">Toutes les Séries TV</string>
+    <string name="unlimited_movies">Films illimités</string>
+    <string name="please_select_your_payment_method">Veuillez sélectionner votre mode de paiement</string>
+    <string name="download_appear_text">Votre élément téléchargé apparaîtra ici.  Elément de téléchargement introuvable</string>
+    <string name="send">Envoyer</string>
+    <string name="searcError_message">Title And Type can\'t be empty</string>
+    <string name="external_download_links">Liens de téléchargement externes:</string>
+    <string name="rating">Evaluation</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_to_fav">Ajouter aux favoris</string>
+    <string name="remove_from_fav">Supprimer des favoris</string>
+
+    <string name="enter_your_activation_code">Entrez votre code d\'activation</string>
+    <string name="enter_code">Entez le code ici</string>
+    <string name="get_activation_code_following">Suivez les étapes ci-dessous pour obtenir un code:</string>
+    <string name="instruction_2">2. Allez sur paramètres.</string>
+    <string name="instruction_3">3. Et cliquez sur  "Connecter ma TV."</string>
+    <string name="signout">Déconnexion</string>
+    <string name="connect">Connexion</string>
+    <string name="paid_content_title">Ceci est un contenu payant</string>
+    <string name="user_name">Nom d\'utilisateur:</string>
+    <string name="emailTv">Email:</string>
+    <string name="expire_date">Date d\'expiration:</string>
+    <string name="signed_in_as">Vous êtes connecté en tant que:</string>
+    <string name="connecting">Connecting...</string>
+    <string name="active_plan">Type d\'abonnement:</string>
+
+    <!-- dialog instruction -->
+    <string name="dialog_instruction_1">1. Go to your </string>
+    <string name="dialog_instruction_2"> app in your phone. </string>
+    <string name="dialog_instruction_3">2. Buy a package </string>
+    <string name="dialog_instruction_4">3. Connect to TV </string>
+    <string name="continue_browsing">Continue browsing</string>
+    <string name="enter_below_code_on_your_tv">Entrez le code qui apparait sur votre TV pour vous connecter.</string>
+    <string name="all_radio_channels">Autres Radios en direct</string>
+    <string name="listening_on">Ecoutez en direct sur</string>
+    <string name="store">Zamoo Store</string>
+    <string name="all_events">Autres événements à venir</string>
+    <string name="login_with_facebook">Se connecter avec facebook</string>
+    <string name="sign_in_with_phone">Connectez-vous avec un téléphone</string>
+
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zamoo_background"
+    android:orientation="vertical"
+    tools:context=".FirebaseSignUpActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sign_in_logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="80dp">
+
+            <Button
+                android:id="@+id/google_auth"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#ffffff"
+                android:drawableStart="@drawable/googleg_standard_color_18"
+                android:onClick="signInWithGoogle"
+                android:text="@string/sign_in_with_google"
+                android:textAllCaps="false"
+                android:padding="12dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/phoneSignInBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:onClick="signInWithPhone"
+                android:background="#43c5a5"
+                android:drawableStart="@drawable/fui_ic_phone_white_24dp"
+                android:text="@string/sign_in_with_phone"
+                android:textAllCaps="false"
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/emailSignInBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:onClick="signInWithEmail"
+                android:background="#be2a26"
+                android:drawableLeft="@drawable/fui_ic_mail_white_24dp"
+                android:text="@string/fui_sign_in_with_email"
+                android:textAllCaps="false"
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/facebookSignInBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:onClick="signInWithFacebook"
+                android:background="#4267b2"
+                android:drawableLeft="@drawable/fui_ic_facebook_white_22dp"
+                android:text="@string/login_with_facebook"
+                android:textAllCaps="false"
+                android:padding="12dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/phone_auth_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "788272370408",
+    "firebase_url": "https://zamoo-443da.firebaseio.com",
+    "project_id": "zamoo-443da",
+    "storage_bucket": "zamoo-443da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788272370408:android:7273d1b112d4e3c2d9ef5d",
+        "android_client_info": {
+          "package_name": "com.zamoo.live"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788272370408-2ck16kqp3a3rjr15pe4uh9e85qn9qfqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zamoo.live",
+            "certificate_hash": "eb199169e23c908dbe589351f074c2b699f8a9c1"
+          }
+        },
+        {
+          "client_id": "788272370408-02g56tistb9pqads16th74uv00ba2aho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvhuvuo5fur7_Ocd1DUA8riE7WyrEpUEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788272370408-02g56tistb9pqads16th74uv00ba2aho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
