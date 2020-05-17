@@ -181,7 +181,7 @@ public class DownloadWorkManager extends Worker {
             }
         }).start();
 
-        return Result.SUCCESS;
+        return Result.success();
     }
 
     @Override
