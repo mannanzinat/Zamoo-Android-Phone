@@ -596,14 +596,14 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     public void controlFullScreenPlayer() {
         if (isFullScr) {
             fullScreenByClick = false;
             isFullScr = false;
             swipeRefreshLayout.setVisibility(VISIBLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
             if (isVideo) {
                 lPlay.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, playerHeight));
@@ -620,7 +620,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             isFullScr = true;
             swipeRefreshLayout.setVisibility(GONE);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
             if (isVideo) {
                 lPlay.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
@@ -632,7 +632,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
             // reset the orientation
             //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         }
     }
