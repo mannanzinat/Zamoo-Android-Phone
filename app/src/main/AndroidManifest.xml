@@ -44,11 +44,9 @@
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.PapalPaymentActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.WebViewActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/FullscreenTheme" />
 
         <meta-data
@@ -85,32 +83,25 @@
 
         <activity
             android:name="com.zamoo.live.TermsActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.ReplyActivity"
             android:label="@string/title_activity_reply"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.zamoo.live.ProfileActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.PassResetActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.SearchActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.SignUpActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.LoginActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.DetailsActivity"
@@ -119,7 +110,6 @@
             android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
             android:name="com.zamoo.live.MainActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -128,7 +118,6 @@
         <activity
             android:name="com.zamoo.live.SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="fullSensor"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -139,31 +128,24 @@
         <activity
             android:name="com.zamoo.live.ItemMovieActivity"
             android:label="@string/title_activity_item_show"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.zamoo.live.ItemTVActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.ItemSeriesActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.SubscriptionActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.StripePaymentActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.PurchasePlanActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
             android:name="com.zamoo.live.DownloadActivity"
-            android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
 
         <service android:name="com.zamoo.live.service.DownloadService" />
