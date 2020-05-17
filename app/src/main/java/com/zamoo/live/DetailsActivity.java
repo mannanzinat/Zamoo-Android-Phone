@@ -110,6 +110,7 @@ import com.zamoo.live.adapters.FeaturedRadioAdapter;
 import com.zamoo.live.adapters.HomePageAdapter;
 import com.zamoo.live.adapters.LiveTvHomeAdapter;
 import com.zamoo.live.adapters.ProgramAdapter;
+import com.zamoo.live.adapters.RelatedTvAdapter;
 import com.zamoo.live.adapters.ServerApater;
 import com.zamoo.live.models.CastCrew;
 import com.zamoo.live.models.CommentsModel;
@@ -158,7 +159,8 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.google.android.gms.ads.AdActivity.CLASS_NAME;
 
-public class DetailsActivity extends AppCompatActivity implements CastPlayer.SessionAvailabilityListener, ProgramAdapter.OnProgramClickListener {
+public class DetailsActivity extends AppCompatActivity implements CastPlayer.SessionAvailabilityListener,
+        ProgramAdapter.OnProgramClickListener, RelatedTvAdapter.RelatedTvClickListener {
 
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final int PRELOAD_TIME_S = 20;
@@ -181,7 +183,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     private HomePageAdapter relatedAdapter;
     private FeaturedRadioAdapter relatedRadioAdapter;
     private EventHomeAdapter relatedEventAdapter;
-    private LiveTvHomeAdapter relatedTvAdapter;
+    private RelatedTvAdapter relatedTvAdapter;
     private CastCrewAdapter castCrewAdapter;
 
     int start = 0;
@@ -1180,6 +1182,13 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         }
     }
 
+    @Override
+    public void onRelatedTvClicked(CommonModels obj) {
+        type = obj.getVideoType();
+        id = obj.getId();
+        initGetData();
+    }
+
     private class SubtitleAdapter extends RecyclerView.Adapter<SubtitleAdapter.OriginalViewHolder> {
 
         private List<SubtitleModel> items = new ArrayList<>();
@@ -1484,7 +1493,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             rvRelated.removeAllViews();
             listRelated.clear();
 
-
             programAdapter = new ProgramAdapter(programs, this);
             programAdapter.setOnProgramClickListener(this);
             programRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -1492,14 +1500,13 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             programRv.setAdapter(programAdapter);
 
             //----related rv----------
-            relatedTvAdapter = new LiveTvHomeAdapter(this, listRelated, TAG);
+            relatedTvAdapter = new RelatedTvAdapter( listRelated, this);
             rvRelated.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             rvRelated.setHasFixedSize(true);
             rvRelated.setAdapter(relatedTvAdapter);
-
+            relatedTvAdapter.setListener(this);
 
             imgAddFav.setVisibility(GONE);
-
 
             serverAdapter = new ServerApater(this, listDirector, "tv");
             rvServer.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -1865,9 +1872,11 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
         progressBar.setVisibility(VISIBLE);
 
-        if (player != null) {
+        if (player != null){
+            player.stop();
             player.release();
         }
+
 
         webView.setVisibility(GONE);
         playerLayout.setVisibility(VISIBLE);
@@ -1895,12 +1904,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             player.setPlayWhenReady(true);
         }*/
 
-        player.setPlayWhenReady(true);
-
-
-        simpleExoPlayerView.setPlayer(player);
-
-
         Uri uri = Uri.parse(url);
 
         if (type.equals("hls")) {
@@ -1920,6 +1923,8 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
         //Toast.makeText(context, "castSession:"+getCastSessionObj()+"", Toast.LENGTH_SHORT).show();
         player.prepare(mediaSource, true, false);
+        player.setPlayWhenReady(true);
+        simpleExoPlayerView.setPlayer(player);
 
         player.addListener(new Player.DefaultEventListener() {
             @Override
@@ -2954,7 +2959,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
             player.release();
             player = null;
             simpleExoPlayerView.setPlayer(null);
-            simpleExoPlayerView = null;
+            //simpleExoPlayerView = null;
         }
 
         if (simpleRadioPlayer != null) {
