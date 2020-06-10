@@ -803,8 +803,6 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         downloadIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 if (activeMovie) {
                     openDownloadServerDialog();
                 } else {
@@ -842,11 +840,10 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         simpleExoPlayerView.setControllerVisibilityListener(new PlayerControlView.VisibilityListener() {
             @Override
             public void onVisibilityChange(int visibility) {
-                Log.e("Visibil", String.valueOf(visibility));
                 if (visibility == 0) {
                     imgBack.setVisibility(VISIBLE);
 
-                    if (type.equals("tv") || type.equals("tvseries")) {
+                    if (type.equals("tv") || type.equals("tvseries") || type.equalsIgnoreCase("event")) {
                         imgFull.setVisibility(VISIBLE);
                     } else {
                         imgFull.setVisibility(GONE);
@@ -1086,10 +1083,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         castCrews.clear();
     }
 
-
     public void showDialog(Context context, List<SubtitleModel> list) {
-
-
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
         View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog_subtitle, viewGroup, false);
@@ -1989,13 +1983,9 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
     private MediaSource rtmpMediaSource(Uri uri) {
         MediaSource videoSource = null;
-
-
         RtmpDataSourceFactory dataSourceFactory = new RtmpDataSourceFactory();
         videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(uri);
-
-
         return videoSource;
 
     }
@@ -2490,10 +2480,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
 
     }
 
-
     private void getData(String vtype, String vId) {
-
-
         String type = "&&type=" + vtype;
         String id = "&id=" + vId;
 
