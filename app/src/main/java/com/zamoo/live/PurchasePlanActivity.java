@@ -60,7 +60,8 @@ public class PurchasePlanActivity extends AppCompatActivity implements PackageAd
     private boolean isDark;
 
     private static PayPalConfiguration config = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            //make ENVIRONMENT_SANDBOX to ENVIRONMENT_PRODUCTION for live payment
+            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
             .clientId(ApiResources.PAYPAL_CLIENT_ID);
     private Package packageItem;
     private PaymentBottomShitDialog paymentBottomShitDialog;
