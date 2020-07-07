@@ -12,4 +12,6 @@
     <dimen name="viewpager_margin_overlap">-150dp</dimen>
     <dimen name="lb_details_v2_card_height">430dp</dimen>
 
+    <dimen name="login_button_corner">15dp</dimen>
+
 </resources>
