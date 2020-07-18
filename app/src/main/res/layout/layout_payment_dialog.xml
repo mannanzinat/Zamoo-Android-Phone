@@ -58,7 +58,7 @@
             android:text="Pay with Stripe"
             android:background="@color/stripeColor"
             android:textAllCaps="false"
-            android:visibility="gone"
+            android:visibility="visible"
             />
 
     </LinearLayout>

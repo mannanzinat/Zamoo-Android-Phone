@@ -344,23 +344,43 @@
                                 android:nextFocusLeft="@id/adView1"
                                 android:nextFocusRight="@id/country_layout">
 
-                                <TextView
-                                    android:id="@+id/tv_genre"
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:id="@+id/genre_header"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/explore_by_genre"
-                                    android:layout_marginLeft="15dp"
-                                    android:paddingTop="8dp"
-                                    android:paddingBottom="8dp"
-                                    android:textColor="@color/colorPrimary"
-                                    android:textAppearance="@style/TextAppearance.Medium.Bold"
-                                    />
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="@dimen/spacing_large"
+                                    android:paddingRight="@dimen/spacing_large">
+
+                                    <TextView
+                                        android:id="@+id/tv_genre"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/explore_by_genre"
+                                        android:textAppearance="@style/TextAppearance.Medium.Bold"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <Button
+                                        android:id="@+id/btn_more_genre"
+                                        style="@style/Widget.AppCompat.Button.Borderless"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:minWidth="0dp"
+                                        android:text="@string/more"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/colorPrimary" />
+
+                                </LinearLayout>
+
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/genre_rv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/tv_genre"
+                                    android:layout_below="@id/genre_header"
                                     android:layout_marginTop="8dp">
 
                                 </androidx.recyclerview.widget.RecyclerView>
@@ -375,23 +395,41 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp">
 
-                                <TextView
-                                    android:id="@+id/tv_country"
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:id="@+id/country_header"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/explore_by_country"
-                                    android:layout_marginLeft="15dp"
-                                    android:paddingTop="8dp"
-                                    android:textColor="@color/colorPrimary"
-                                    android:paddingBottom="8dp"
-                                    android:textAppearance="@style/TextAppearance.Medium.Bold"
-                                    />
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="@dimen/spacing_large"
+                                    android:paddingRight="@dimen/spacing_large">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/explore_by_country"
+                                        android:textAppearance="@style/TextAppearance.Medium.Bold"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <Button
+                                        android:id="@+id/btn_more_country"
+                                        style="@style/Widget.AppCompat.Button.Borderless"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:minWidth="0dp"
+                                        android:text="@string/more"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/colorPrimary" />
+
+                                </LinearLayout>
 
                                 <androidx.recyclerview.widget.RecyclerView
                                     android:id="@+id/country_rv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@id/tv_country"
+                                    android:layout_below="@id/country_header"
                                     android:layout_marginTop="8dp">
 
                                 </androidx.recyclerview.widget.RecyclerView>

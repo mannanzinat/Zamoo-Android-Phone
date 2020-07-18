@@ -48,6 +48,8 @@ import com.zamoo.live.adapters.HomePageAdapter;
 import com.zamoo.live.adapters.LiveTvHomeAdapter;
 import com.zamoo.live.models.CommonModels;
 import com.zamoo.live.models.GenreModel;
+import com.zamoo.live.nav_fragments.CountryFragment;
+import com.zamoo.live.nav_fragments.GenreFragment;
 import com.zamoo.live.utils.PreferenceUtils;
 import com.zamoo.live.utils.ApiResources;
 import com.zamoo.live.utils.BannerAds;
@@ -93,7 +95,7 @@ public class HomeFragment extends Fragment {
     private List<CommonModels> genreList = new ArrayList<>();
     private List<CommonModels> countryList = new ArrayList<>();
     private ApiResources apiResources;
-    private Button btnMoreMovie, btnMoreTv, btnMoreRadio, btnMoreSeries;
+    private Button btnMoreMovie, btnMoreTv, btnMoreRadio, btnMoreSeries, btnMoreGenre, btnMoreCountry;
     private CSliderAdapter cSliderAdapter;
 
     private VolleySingleton singleton;
@@ -132,6 +134,8 @@ public class HomeFragment extends Fragment {
         btnMoreTv           = view.findViewById(R.id.btn_more_tv);
         btnMoreRadio        = view.findViewById(R.id.btn_more_radio);
         btnMoreMovie        = view.findViewById(R.id.btn_more_movie);
+        btnMoreGenre        = view.findViewById(R.id.btn_more_genre);
+        btnMoreCountry      = view.findViewById(R.id.btn_more_country);
         shimmerFrameLayout  = view.findViewById(R.id.shimmer_view_container);
         tvNoItem            = view.findViewById(R.id.tv_noitem);
         coordinatorLayout   = view.findViewById(R.id.coordinator_lyt);
@@ -360,10 +364,12 @@ public class HomeFragment extends Fragment {
         btnMoreTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ItemTVActivity.class);
+                /*Intent intent = new Intent(getContext(), ItemTVActivity.class);
                 intent.putExtra("url", apiResources.getGet_live_tv());
                 intent.putExtra("title", "Live TV");
-                getActivity().startActivity(intent);
+                getActivity().startActivity(intent);*/
+
+                loadFragment(new LiveTvFragment());
             }
         });
 
@@ -387,6 +393,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        btnMoreGenre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new GenreFragment());
+            }
+        });
+
+        btnMoreCountry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new CountryFragment());
+            }
+        });
+
        /* btnMoreEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -399,6 +419,16 @@ public class HomeFragment extends Fragment {
 */
     }
 
+    private boolean loadFragment(Fragment fragment){
+        if (fragment!=null){
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container,fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
 
     private void getAdDetails(String url) {
         JSONObject params = new JSONObject();

@@ -454,18 +454,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private boolean loadFragment(Fragment fragment){
-
         if (fragment!=null){
-
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container,fragment)
                     .commit();
-
             return true;
         }
         return false;
-
     }
 
     public void openDrawer() {

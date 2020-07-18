@@ -41,7 +41,7 @@ public class MainHomeFragment extends Fragment {
 
 
          bottomNavigation = view.findViewById(R.id.navigation_view);
-         bottomNavigation.setSelectedItemId(R.id.nav_event);
+         bottomNavigation.setSelectedItemId(R.id.nav_home);
 
         SharedPreferences sharedPreferences = activity.getSharedPreferences("push", MODE_PRIVATE);
         boolean isDark = sharedPreferences.getBoolean("dark", false);
@@ -79,7 +79,7 @@ public class MainHomeFragment extends Fragment {
 
 
 
-        loadFragment(new EventFragment());
+        loadFragment(new HomeFragment());
 
     }
 
