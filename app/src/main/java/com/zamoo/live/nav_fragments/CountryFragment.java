@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryFragment extends Fragment {
-
     ShimmerFrameLayout shimmerFrameLayout;
     private ApiResources apiResources;
     private RecyclerView recyclerView;
@@ -54,7 +53,6 @@ public class CountryFragment extends Fragment {
     private RelativeLayout adView;
 
     private MainActivity activity;
-
 
     private static final int HIDE_THRESHOLD = 20;
     private int scrolledDistance = 0;
@@ -156,7 +154,7 @@ public class CountryFragment extends Fragment {
 
     }
 
-    @Override
+       @Override
     public void onStart() {
         super.onStart();
 

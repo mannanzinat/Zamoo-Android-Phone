@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".EventActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
@@ -326,7 +341,7 @@
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <RelativeLayout
-        android:layout_below="@+id/shimmer_view_container"
+        android:layout_below="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/adView"
@@ -351,7 +366,7 @@
                     android:scrollbars="vertical"
                     android:scrollingCache="true"
                     tools:listitem="@layout/card_live_tv_home"
-                     android:clipToPadding="false"
+                    android:clipToPadding="false"
                     tools:itemCount="3" />
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -434,6 +449,5 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </RelativeLayout>

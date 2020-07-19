@@ -19,34 +19,35 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.zamoo.live.utils.MyAppClass"
+        android:name=".utils.MyAppClass"
         android:allowBackup="true"
-        android:logo="@mipmap/ic_launcher"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:logo="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-
-        <activity android:name="com.zamoo.live.ItemCountryActivity" />
-        <activity android:name="com.zamoo.live.FacebookSignInActivity" />
-        <activity android:name="com.zamoo.live.FirebaseSignUpActivity" />
-        <activity android:name="com.zamoo.live.EventPaymentStripeActivity" />
-        <activity android:name="com.zamoo.live.ItemEventActivity" />
-        <activity android:name="com.zamoo.live.ItemRadioActivity" />
-
+        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".LiveTvActivity" />
+        <activity android:name=".GenreActivity" />
+        <activity android:name=".CountryActivity" />
+        <activity android:name=".ItemCountryActivity" />
+        <activity android:name=".FacebookSignInActivity" />
+        <activity android:name=".FirebaseSignUpActivity" />
+        <activity android:name=".EventPaymentStripeActivity" />
+        <activity android:name=".ItemEventActivity" />
+        <activity android:name=".ItemRadioActivity" />
         <activity
-            android:name="com.zamoo.live.SearchFilterActivity"
+            android:name=".SearchFilterActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.PapalPaymentActivity"
+            android:name=".PapalPaymentActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.WebViewActivity"
+            android:name=".WebViewActivity"
             android:theme="@style/FullscreenTheme" />
 
         <meta-data
@@ -57,66 +58,66 @@
             android:value="DISABLE" />
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
-
-        <!--facebook-->
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" /> <!-- facebook -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"
-            tools:replace="android:value"/>
+            tools:replace="android:value" />
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/fb_login_protocol_scheme"
+
+                <data
+                    android:scheme="@string/fb_login_protocol_scheme"
                     tools:ignore="ManifestResource" />
             </intent-filter>
-        </activity>
-        <!--facebook end-->
-
+        </activity> <!-- facebook end -->
         <activity
-            android:name="com.zamoo.live.TermsActivity"
+            android:name=".TermsActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.ReplyActivity"
+            android:name=".ReplyActivity"
             android:label="@string/title_activity_reply"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.zamoo.live.ProfileActivity"
+            android:name=".ProfileActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.PassResetActivity"
+            android:name=".PassResetActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.SearchActivity"
+            android:name=".SearchActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.SignUpActivity"
+            android:name=".SignUpActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.LoginActivity"
+            android:name=".LoginActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.DetailsActivity"
+            android:name=".DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
-            android:name="com.zamoo.live.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.Nobar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.zamoo.live.SettingsActivity"
+            android:name=".SettingsActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.SplashscreenActivity"
+            android:name=".SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
@@ -126,29 +127,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.zamoo.live.ItemMovieActivity"
+            android:name=".ItemMovieActivity"
             android:label="@string/title_activity_item_show"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.zamoo.live.ItemTVActivity"
+            android:name=".ItemTVActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.ItemSeriesActivity"
+            android:name=".ItemSeriesActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.SubscriptionActivity"
+            android:name=".SubscriptionActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.StripePaymentActivity"
+            android:name=".StripePaymentActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.PurchasePlanActivity"
+            android:name=".PurchasePlanActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.zamoo.live.DownloadActivity"
+            android:name=".DownloadActivity"
             android:theme="@style/AppTheme.Nobar" />
 
-        <service android:name="com.zamoo.live.service.DownloadService" />
+        <service android:name=".service.DownloadService" />
     </application>
 
 </manifest>

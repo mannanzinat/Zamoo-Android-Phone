@@ -84,7 +84,7 @@ public class ItemCountryActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "id");
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "movie_activity");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Item_country_activity");
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "activity");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
@@ -98,7 +98,7 @@ public class ItemCountryActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipe_layout);
         tvNoItem = findViewById(R.id.tv_noitem);
 
-        //----movie's recycler view-----------------
+        //----country recycler view-----------------
         movie_rl = findViewById(R.id.movie_layout);
         movie_recycler = findViewById(R.id.movie_rv);
         movie_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

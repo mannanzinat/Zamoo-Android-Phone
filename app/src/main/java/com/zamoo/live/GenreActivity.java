@@ -1,19 +1,19 @@
-package com.zamoo.live.nav_fragments;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+package com.zamoo.live;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -21,8 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.zamoo.live.MainActivity;
-import com.zamoo.live.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.zamoo.live.adapters.CountryAdapter;
 import com.zamoo.live.adapters.GenreAdapter;
 import com.zamoo.live.models.CommonModels;
 import com.zamoo.live.utils.ApiResources;
@@ -40,54 +40,57 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenreFragment extends Fragment {
-
+public class GenreActivity extends AppCompatActivity {
     ShimmerFrameLayout shimmerFrameLayout;
+    private FirebaseAnalytics mFirebaseAnalytics;
     private ApiResources apiResources;
     private RecyclerView recyclerView;
     private List<CommonModels> list = new ArrayList<>();
     private GenreAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CoordinatorLayout coordinatorLayout;
+
     private TextView tvNoItem;
-
     private RelativeLayout adView;
-
-    private MainActivity activity;
-
-
 
     private static final int HIDE_THRESHOLD = 20;
     private int scrolledDistance = 0;
     private boolean controlsVisible = true;
 
-
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = (MainActivity) getActivity();
-        return inflater.inflate(R.layout.layout_country,container,false);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
+        boolean isDark = sharedPreferences.getBoolean("dark", false);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle(getResources().getString(R.string.genre));
+        if (isDark) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppThemeLight);
+        }
 
-        adView=view.findViewById(R.id.adView);
-        coordinatorLayout=view.findViewById(R.id.coordinator_lyt);
-        shimmerFrameLayout=view.findViewById(R.id.shimmer_view_container);
-        swipeRefreshLayout=view.findViewById(R.id.swipe_layout);
-        recyclerView=view.findViewById(R.id.recyclerView);
-        tvNoItem=view.findViewById(R.id.tv_noitem);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_genre);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        recyclerView.addItemDecoration(new SpacingItemDecoration(3, Tools.dpToPx(getActivity(), 10), true));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setNestedScrollingEnabled(false);
-        mAdapter = new GenreAdapter(activity, list,"genre", "");
-        recyclerView.setAdapter(mAdapter);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (!isDark) {
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+
+        setSupportActionBar(toolbar);
+
+        //---analytics-----------
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "id");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "genre_activity");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "activity");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        getSupportActionBar().setTitle("Country");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        initView();
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -96,11 +99,9 @@ public class GenreFragment extends Fragment {
                 super.onScrolled(recyclerView, dx, dy);
 
                 if (scrolledDistance > HIDE_THRESHOLD && controlsVisible) {
-
                     controlsVisible = false;
                     scrolledDistance = 0;
                 } else if (scrolledDistance < -HIDE_THRESHOLD && !controlsVisible) {
-
                     controlsVisible = true;
                     scrolledDistance = 0;
                 }
@@ -108,18 +109,14 @@ public class GenreFragment extends Fragment {
                 if((controlsVisible && dy>0) || (!controlsVisible && dy<0)) {
                     scrolledDistance += dy;
                 }
-
-
             }
         });
 
         apiResources=new ApiResources();
-
         shimmerFrameLayout.startShimmer();
 
 
-
-        if (new NetworkInst(getContext()).isNetworkAvailable()){
+        if (new NetworkInst(GenreActivity.this).isNetworkAvailable()){
             getAllGenre();
         }else {
             tvNoItem.setText(getString(R.string.no_internet));
@@ -128,18 +125,15 @@ public class GenreFragment extends Fragment {
             coordinatorLayout.setVisibility(View.VISIBLE);
         }
 
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 coordinatorLayout.setVisibility(View.GONE);
-
                 recyclerView.removeAllViews();
                 list.clear();
                 mAdapter.notifyDataSetChanged();
 
-                if (new NetworkInst(getContext()).isNetworkAvailable()){
+                if (new NetworkInst(GenreActivity.this).isNetworkAvailable()){
                     getAllGenre();
                 }else {
                     tvNoItem.setText(getString(R.string.no_internet));
@@ -152,6 +146,24 @@ public class GenreFragment extends Fragment {
         });
 
         loadAd();
+    }
+
+    private void initView() {
+        adView = findViewById(R.id.adView);
+        coordinatorLayout = findViewById(R.id.coordinator_lyt);
+        shimmerFrameLayout = findViewById(R.id.shimmer_view_container);
+        shimmerFrameLayout.startShimmer();
+
+        swipeRefreshLayout = findViewById(R.id.swipe_layout);
+        tvNoItem = findViewById(R.id.tv_noitem);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.addItemDecoration(new SpacingItemDecoration(3, Tools.dpToPx(GenreActivity.this, 10), true));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(false);
+        mAdapter = new GenreAdapter(GenreActivity.this, list,"genre", "");
+        recyclerView.setAdapter(mAdapter);
 
     }
 
@@ -159,27 +171,21 @@ public class GenreFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-
     }
 
     private void loadAd(){
         if (ApiResources.adStatus.equals("1")) {
 
             if (ApiResources.adType.equals(Constants.ADMOB)) {
-                BannerAds.ShowBannerAds(activity, adView);
+                BannerAds.ShowBannerAds(this, adView);
             } else if (ApiResources.adType.equals(Constants.START_APP)) {
-
-                BannerAds.showStartAppBanner(activity, adView);
-
+                BannerAds.showStartAppBanner(this, adView);
 
             } else if(ApiResources.adType.equals(Constants.NETWORK_AUDIENCE)) {
 
-
             }
-
         }
     }
-
 
     private void getAllGenre(){
 
@@ -218,13 +224,23 @@ public class GenreFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
                 shimmerFrameLayout.stopShimmer();
                 shimmerFrameLayout.setVisibility(View.GONE);
-                new ToastMsg(getActivity()).toastIconError(getString(R.string.fetch_error));
+                new ToastMsg(GenreActivity.this).toastIconError(getString(R.string.fetch_error));
 
-               coordinatorLayout.setVisibility(View.VISIBLE);
+                coordinatorLayout.setVisibility(View.VISIBLE);
             }
         });
-        Volley.newRequestQueue(getContext()).add(jsonArrayRequest);
+        Volley.newRequestQueue(GenreActivity.this).add(jsonArrayRequest);
 
     }
-    
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

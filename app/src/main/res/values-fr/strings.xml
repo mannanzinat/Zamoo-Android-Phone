@@ -289,5 +289,6 @@ Zamoo Play mettra occasionnellement à jour cette déclaration de confidentialit
     <string name="all_events">Autres événements à venir</string>
     <string name="login_with_facebook">Se connecter avec facebook</string>
     <string name="sign_in_with_phone">Connectez-vous avec un téléphone</string>
+    <string name="live_events">Spectacles en Direct</string>
 
 </resources>

@@ -132,7 +132,6 @@
     </string-array>
 
 
-
     <string name="title_activity_player">PlayerActivity</string>
 
     <string name="title_activity_item_show">ItemShowActivity</string>
@@ -271,6 +270,7 @@
     <string name="login_with_facebook">Login with Facebook</string>
     <string name="sign_in_with_phone">Sign in with phone</string>
     <string name="sign_in_with_google" translatable="false">Sign in with Google</string>
+    <string name="live_events">Live Events</string>
 
 
 </resources>

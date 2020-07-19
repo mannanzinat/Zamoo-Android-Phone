@@ -508,6 +508,35 @@
                                 android:layout_height="wrap_content"
                                 android:scrollingCache="true"/>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/spacing_large"
+                                android:paddingRight="@dimen/spacing_large">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/live_events"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textAppearance="@style/TextAppearance.Medium.Bold" />
+
+                                <Button
+                                    android:id="@+id/btn_more_event"
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:minWidth="0dp"
+                                    android:text="@string/more"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/colorPrimary" />
+
+                            </LinearLayout>
+
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerViewEvent"

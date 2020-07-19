@@ -1,25 +1,24 @@
-package com.zamoo.live.fragments;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+package com.zamoo.live;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.zamoo.live.Config;
-import com.zamoo.live.MainActivity;
-import com.zamoo.live.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.zamoo.live.adapters.LiveTvCategoryAdapter;
 import com.zamoo.live.network.RetrofitClient;
 import com.zamoo.live.network.apis.LiveTvApi;
@@ -37,57 +36,73 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 
-public class LiveTvFragment extends Fragment {
+public class LiveTvActivity extends AppCompatActivity {
     private ShimmerFrameLayout shimmerFrameLayout;
+    private FirebaseAnalytics mFirebaseAnalytics;
     private RecyclerView recyclerView;
     private LiveTvCategoryAdapter adapter;
     private List<LiveTvCategory> liveTvCategories =new ArrayList<>();
-    private ApiResources apiResources;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CoordinatorLayout coordinatorLayout;
     private TextView tvNoItem;
     private RelativeLayout adView;
-    private MainActivity activity;
     private static final int HIDE_THRESHOLD = 20;
     private int scrolledDistance = 0;
     private boolean controlsVisible = true;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        activity = (MainActivity) getActivity();
-        activity.setTitle(R.string.live_tv);
-        return inflater.inflate(R.layout.fragment_livetv,null);
+    protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = getSharedPreferences("push", MODE_PRIVATE);
+        boolean isDark = sharedPreferences.getBoolean("dark", false);
+
+        if (isDark) {
+            setTheme(R.style.AppThemeDark);
+        } else {
+            setTheme(R.style.AppThemeLight);
+        }
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_live_tv);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        if (!isDark) {
+            toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+
+        setSupportActionBar(toolbar);
+
+        //---analytics-----------
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "id");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "live_tv_activity");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "activity");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        getSupportActionBar().setTitle(getString(R.string.live_tv));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        initComponent();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //getActivity().setTitle(getResources().getString(R.string.live_tv));
+    private void initComponent() {
 
-        initComponent(view);
-
-    }
-
-
-    private void initComponent(View view) {
-
-        adView=view.findViewById(R.id.adView);
-        apiResources=new ApiResources();
-        shimmerFrameLayout=view.findViewById(R.id.shimmer_view_container);
+        adView = findViewById(R.id.adView);
+        shimmerFrameLayout =  findViewById(R.id.shimmer_view_container);
         shimmerFrameLayout.startShimmer();
-        progressBar=view.findViewById(R.id.item_progress_bar);
-        swipeRefreshLayout=view.findViewById(R.id.swipe_layout);
-        coordinatorLayout=view.findViewById(R.id.coordinator_lyt);
-        tvNoItem=view.findViewById(R.id.tv_noitem);
+        progressBar = findViewById(R.id.item_progress_bar);
+        swipeRefreshLayout = findViewById(R.id.swipe_layout);
+        coordinatorLayout = findViewById(R.id.coordinator_lyt);
+        tvNoItem = findViewById(R.id.tv_noitem);
 
 
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView =  findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(LiveTvActivity.this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-        adapter = new LiveTvCategoryAdapter(activity, liveTvCategories);
+        adapter = new LiveTvCategoryAdapter(this, liveTvCategories);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -115,7 +130,7 @@ public class LiveTvFragment extends Fragment {
 
 
 
-        if (new NetworkInst(activity).isNetworkAvailable()){
+        if (new NetworkInst(this).isNetworkAvailable()){
             getLiveTvData();
         }else {
             tvNoItem.setText(getString(R.string.no_internet));
@@ -123,7 +138,6 @@ public class LiveTvFragment extends Fragment {
             shimmerFrameLayout.setVisibility(View.GONE);
             coordinatorLayout.setVisibility(View.VISIBLE);
         }
-
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -133,7 +147,7 @@ public class LiveTvFragment extends Fragment {
                 liveTvCategories.clear();
                 recyclerView.removeAllViews();
                 adapter.notifyDataSetChanged();
-                if (new NetworkInst(activity).isNetworkAvailable()){
+                if (new NetworkInst(LiveTvActivity.this).isNetworkAvailable()){
                     getLiveTvData();
                 }else {
                     tvNoItem.setText(getString(R.string.no_internet));
@@ -149,20 +163,14 @@ public class LiveTvFragment extends Fragment {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
     private void loadAd(){
         if (ApiResources.adStatus.equals("1")) {
 
             if (ApiResources.adType.equals(Constants.ADMOB)) {
-                BannerAds.ShowBannerAds(activity, adView);
+                BannerAds.ShowBannerAds(this, adView);
             } else if (ApiResources.adType.equals(Constants.START_APP)) {
 
-                BannerAds.showStartAppBanner(activity, adView);
+                BannerAds.showStartAppBanner(this, adView);
 
 
             } else if(ApiResources.adType.equals(Constants.NETWORK_AUDIENCE)) {
@@ -200,7 +208,7 @@ public class LiveTvFragment extends Fragment {
 
                     coordinatorLayout.setVisibility(View.VISIBLE);
                     tvNoItem.setText(getResources().getString(R.string.something_wront_text));
-                    new ToastMsg(activity).toastIconError("Something went wrong...");
+                    new ToastMsg(LiveTvActivity.this).toastIconError("Something went wrong...");
                 }
 
             }
@@ -221,4 +229,14 @@ public class LiveTvFragment extends Fragment {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

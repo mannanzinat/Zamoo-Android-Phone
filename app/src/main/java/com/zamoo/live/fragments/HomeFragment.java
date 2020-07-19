@@ -31,11 +31,16 @@ import com.github.islamkhsh.CardSliderAdapter;
 import com.github.islamkhsh.CardSliderViewPager;
 import com.ixidev.gdpr.GDPRChecker;
 import com.zamoo.live.Config;
+import com.zamoo.live.CountryActivity;
 import com.zamoo.live.DetailsActivity;
+import com.zamoo.live.EventActivity;
+import com.zamoo.live.GenreActivity;
+import com.zamoo.live.ItemCountryActivity;
 import com.zamoo.live.ItemMovieActivity;
 import com.zamoo.live.ItemRadioActivity;
 import com.zamoo.live.ItemSeriesActivity;
 import com.zamoo.live.ItemTVActivity;
+import com.zamoo.live.LiveTvActivity;
 import com.zamoo.live.LoginActivity;
 import com.zamoo.live.MainActivity;
 import com.zamoo.live.R;
@@ -49,6 +54,7 @@ import com.zamoo.live.adapters.LiveTvHomeAdapter;
 import com.zamoo.live.models.CommonModels;
 import com.zamoo.live.models.GenreModel;
 import com.zamoo.live.nav_fragments.CountryFragment;
+import com.zamoo.live.nav_fragments.EventFragment;
 import com.zamoo.live.nav_fragments.GenreFragment;
 import com.zamoo.live.utils.PreferenceUtils;
 import com.zamoo.live.utils.ApiResources;
@@ -95,7 +101,7 @@ public class HomeFragment extends Fragment {
     private List<CommonModels> genreList = new ArrayList<>();
     private List<CommonModels> countryList = new ArrayList<>();
     private ApiResources apiResources;
-    private Button btnMoreMovie, btnMoreTv, btnMoreRadio, btnMoreSeries, btnMoreGenre, btnMoreCountry;
+    private Button btnMoreMovie, btnMoreTv, btnMoreRadio, btnMoreSeries, btnMoreGenre, btnMoreCountry, btnMoreEvent;
     private CSliderAdapter cSliderAdapter;
 
     private VolleySingleton singleton;
@@ -136,6 +142,7 @@ public class HomeFragment extends Fragment {
         btnMoreMovie        = view.findViewById(R.id.btn_more_movie);
         btnMoreGenre        = view.findViewById(R.id.btn_more_genre);
         btnMoreCountry      = view.findViewById(R.id.btn_more_country);
+        btnMoreEvent        = view.findViewById(R.id.btn_more_event);
         shimmerFrameLayout  = view.findViewById(R.id.shimmer_view_container);
         tvNoItem            = view.findViewById(R.id.tv_noitem);
         coordinatorLayout   = view.findViewById(R.id.coordinator_lyt);
@@ -361,15 +368,13 @@ public class HomeFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+
         btnMoreTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(getContext(), ItemTVActivity.class);
-                intent.putExtra("url", apiResources.getGet_live_tv());
-                intent.putExtra("title", "Live TV");
-                getActivity().startActivity(intent);*/
+                Intent intent = new Intent(getContext(), LiveTvActivity.class);
+                getActivity().startActivity(intent);
 
-                loadFragment(new LiveTvFragment());
             }
         });
 
@@ -396,14 +401,23 @@ public class HomeFragment extends Fragment {
         btnMoreGenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new GenreFragment());
+                startActivity(new Intent(getActivity(), GenreActivity.class));
+
             }
         });
 
         btnMoreCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new CountryFragment());
+                startActivity(new Intent(getActivity(), CountryActivity.class));
+
+            }
+        });
+
+        btnMoreEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), EventActivity.class));
             }
         });
 

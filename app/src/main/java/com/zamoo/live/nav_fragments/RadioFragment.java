@@ -78,8 +78,6 @@ public class RadioFragment extends Fragment {
 
         initComponent(view);
 
-
-
     }
 
     private void initComponent(View view) {

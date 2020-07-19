@@ -85,7 +85,7 @@ public class MainHomeFragment extends Fragment {
 
 
     //----load fragment----------------------
-    private boolean loadFragment(Fragment fragment) {
+    public boolean loadFragment(Fragment fragment) {
 
         if (fragment != null) {
 
